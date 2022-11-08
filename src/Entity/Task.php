@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
-class Task
+class Task implements \JsonSerializable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -92,5 +92,17 @@ class Task
         $this->is_done = $is_done;
 
         return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            "id" => $this->getId(),
+            "title" => $this->getTitle(),
+            "description" => $this->getDescription(),
+            "due_date" => $this->getDueTime()->format('Y-m-d'),
+            "create_time" => $this->getCreateTime()->format('Y-m-d'),
+            "is_done" => $this->isIsDone(),
+        ];
     }
 }

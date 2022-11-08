@@ -2,21 +2,22 @@
 
 namespace App\Controller;
 
-use App\Entity\Task;
+use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TaskController extends AbstractController
+class UserController extends AbstractController
 {
-    #[Route('/api/tasks', name: 'app_task')]
+    #[Route('/api/user', name: 'app_user')]
     public function index(ManagerRegistry $doctrine): JsonResponse
     {
-        $tasks = $doctrine->getRepository(Task::class)->findAll();
+        $users = $doctrine->getRepository(User::class)->findAll();
 
         return $this->json(
-            $tasks
+            $users
         );
     }
+
 }
