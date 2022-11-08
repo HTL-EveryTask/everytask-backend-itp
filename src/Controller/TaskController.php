@@ -14,8 +14,20 @@ class TaskController extends AbstractController
     public function index(ManagerRegistry $doctrine): JsonResponse
     {
         $tasks = $doctrine->getRepository(Task::class)->findAll();
+        $serializedTasks = [];
+        foreach ($tasks as $task) {
+            $serializedTasks[] = [
+                'id' => $task->getId(),
+                'title' => $task->getTitle(),
+                'description' => $task->getDescription(),
+                'due_date' => $task->getDueTime()->format('Y-m-d'),
+                'create_time' => $task->getCreateTime()->format('Y-m-d'),
+                'is_done' => $task->isIsDone(),
+            ];
+        }
+
         return $this->json(
-            $tasks[0]->getTitle()
+            $serializedTasks
         );
     }
 }
