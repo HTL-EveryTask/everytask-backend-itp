@@ -94,85 +94,91 @@ class AppFixtures extends Fixture
             $newTask->setIsDone($task['is_done']);
             $manager->persist($newTask);
         }
-        
+
         $users = [
             [
+                'id' => 1,
                 'username' => 'user1',
                 'password' => 'user1',
                 'email' => 'user1'],
             [
+                'id' => 2,
                 'username' => 'user2',
                 'password' => 'user2',
                 'email' => 'user2'],
             [
+                'id' => 3,
                 'username' => 'user3',
                 'password' => 'user3',
                 'email' => 'user3'],
             [
+                'id' => 4,
                 'username' => 'user4',
                 'password' => 'user4',
                 'email' => 'user4'],
             [
+                'id' => 5,
                 'username' => 'user5',
                 'password' => 'user5',
                 'email' => 'user5'],
         ];
 
-        foreach ($users as $user) {
-            $newUser = new User();
-            $newUser->setUsername($user['username']);
-            $newUser->setPassword($user['password']);
-            $newUser->setEmail($user['email']);
-            $manager->persist($newUser);
-        }
-
         $appointments = [
             [
                 'title' => 'Termin 1',
                 'description' => 'Description 1',
-                'start_time' => '2021-01-01',
-                'end_time' => '2021-01-01',
+                'start_time' => '2021-01-21',
+                'end_time' => '2021-01-22',
                 'is_done' => false,
             ],
             [
                 'title' => 'Termin 2',
                 'description' => 'Description 2',
                 'start_time' => '2021-01-02',
-                'end_time' => '2021-01-02',
+                'end_time' => '2021-01-03',
                 'is_done' => false,
             ],
             [
                 'title' => 'Termin 3',
                 'description' => 'Description 3',
                 'start_time' => '2021-01-03',
-                'end_time' => '2021-01-03',
+                'end_time' => '2021-01-14',
                 'is_done' => false,
             ],
             [
                 'title' => 'Termin 4',
                 'description' => 'Description 4',
-                'start_time' => '2021-01-04',
-                'end_time' => '2021-01-04',
+                'start_time' => '2021-01-14',
+                'end_time' => '2021-01-15',
                 'is_done' => false,
             ],
             [
                 'title' => 'Termin 5',
                 'description' => 'Description 5',
                 'start_time' => '2021-01-05',
-                'end_time' => '2021-01-05',
+                'end_time' => '2021-01-06',
                 'is_done' => false,
             ],
         ];
 
         foreach ($appointments as $appointment) {
-            $newTermin = new Appointment();
-            $newTermin->setTitle($appointment['title']);
-            $newTermin->setStartTime(new \DateTime($appointment['start_time']));
-            $newTermin->setEndTime(new \DateTime($appointment['end_time']));
-            $manager->persist($newTermin);
+            $newAppointment = new Appointment();
+            $newAppointment->setTitle($appointment['title']);
+            $newAppointment->setStartTime(new \DateTime($appointment['start_time']));
+            $newAppointment->setEndTime(new \DateTime($appointment['end_time']));
+            $appointments_objetcs[] = $newAppointment;
+            $manager->persist($newAppointment);
         }
 
-        
+        foreach ($users as $user) {
+            $newUser = new User();
+            $newUser->setUsername($user['username']);
+            $newUser->setPassword($user['password']);
+            $newUser->setEmail($user['email']);
+            $newUser->addAppointment($appointments_objetcs[$user['id'] - 1]);
+            $manager->persist($newUser);
+        }
+
 
         $manager->flush();
     }
