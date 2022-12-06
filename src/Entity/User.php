@@ -15,16 +15,16 @@ class User implements \JsonSerializable
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $username = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $password = null;
 
-    #[ORM\ManyToMany(targetEntity: Appointment::class, mappedBy: 'user')]
+    #[ORM\ManyToMany(targetEntity: Appointment::class, inversedBy: 'users')]
     private Collection $appointments;
 
     public function __construct()
@@ -32,9 +32,12 @@ class User implements \JsonSerializable
         $this->appointments = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function jsonSerialize(): mixed
     {
-        return $this->id;
+        // TODO: Implement jsonSerialize() method.
+        return [
+            'id' => $this->id
+        ];
     }
 
     public function getUsername(): ?string
@@ -42,7 +45,7 @@ class User implements \JsonSerializable
         return $this->username;
     }
 
-    public function setUsername(string $username): self
+    public function setUsername(?string $username): self
     {
         $this->username = $username;
 
@@ -54,7 +57,7 @@ class User implements \JsonSerializable
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -66,22 +69,11 @@ class User implements \JsonSerializable
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
         return $this;
-    }
-
-    public function jsonSerialize(): mixed
-    {
-        return [
-            'id' => $this->getId(),
-            'username' => $this->getUsername(),
-            'email' => $this->getEmail(),
-            'password' => $this->getPassword(),
-            'appointments' => $this->getAppointments(),
-        ];
     }
 
     /**
@@ -96,7 +88,6 @@ class User implements \JsonSerializable
     {
         if (!$this->appointments->contains($appointment)) {
             $this->appointments->add($appointment);
-            $appointment->addUser($this);
         }
 
         return $this;
@@ -104,9 +95,7 @@ class User implements \JsonSerializable
 
     public function removeAppointment(Appointment $appointment): self
     {
-        if ($this->appointments->removeElement($appointment)) {
-            $appointment->removeUser($this);
-        }
+        $this->appointments->removeElement($appointment);
 
         return $this;
     }
