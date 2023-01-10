@@ -14,7 +14,10 @@ class TaskController extends AbstractController
     public function index(ManagerRegistry $doctrine): JsonResponse
     {
         $tasks = $doctrine->getRepository(Task::class)->findAll();
-
+        //sort by due_time, closest first
+        usort($tasks, function ($a, $b) {
+            return $a->getDueTime() <=> $b->getDueTime();
+        });
         return $this->json(
             $tasks
         );
