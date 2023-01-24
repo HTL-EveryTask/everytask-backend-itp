@@ -58,7 +58,7 @@ class AppFixtures extends Fixture
             [
                 'title' => 'Buch lesen',
                 'description' => 'Description 7',
-                'due_date' => '202305-07',
+                'due_date' => '2023-05-07',
                 'create_time' => '2022-01-07',
                 'is_done' => true,
             ],
