@@ -14,9 +14,9 @@ class AppFixtures extends Fixture
     {
         $tasks = [
             [
-                'title' => 'An der HTL Rennweg anmelden',
+                'title' => 'ITP Projektabnahme',
                 'description' => 'Description 1',
-                'due_date' => '2023-01-20',
+                'due_date' => '2023-01-24',
                 'create_time' => '2022-01-01',
                 'is_done' => false,
             ],
