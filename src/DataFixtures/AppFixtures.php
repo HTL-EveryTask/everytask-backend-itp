@@ -125,40 +125,36 @@ class AppFixtures extends Fixture
 
         $appointments = [
             [
-                'title' => 'Termin 1',
-                'description' => 'Description 1',
-                'start_time' => '2022-01-21',
-                'end_time' => '2022-01-22',
-                'is_done' => false,
+                'title' => 'Deutsch SA',
+                'description' => 'Alle Matura Textsorten',
+                'start_time' => '2023-02-21',
+                'end_time' => '2023-02-21',
             ],
             [
-                'title' => 'Termin 2',
-                'description' => 'Description 2',
-                'start_time' => '2022-01-02',
-                'end_time' => '2022-01-03',
-                'is_done' => false,
+                'title' => 'Englisch SA',
+                'description' => 'Vocabulary: Technology, Generation',
+                'start_time' => '2023-03-01',
+                'end_time' => '2023-03-01',
             ],
             [
-                'title' => 'Termin 3',
-                'description' => 'Description 3',
-                'start_time' => '2022-01-03',
-                'end_time' => '2022-01-14',
-                'is_done' => false,
+                'title' => 'Security Abnahme',
+                'description' => 'Letzte Abnahme',
+                'start_time' => '2023-04-02',
+                'end_time' => '2023-04-02',
             ],
             [
-                'title' => 'Termin 4',
-                'description' => 'Description 4',
-                'start_time' => '2022-01-14',
-                'end_time' => '2022-01-15',
-                'is_done' => false,
+                'title' => 'ITP Abnahme',
+                'description' => 'Projekt Abnahme',
+                'start_time' => '2023-04-13',
+                'end_time' => '2023-04-13',
             ],
             [
-                'title' => 'Termin 5',
-                'description' => 'Description 5',
-                'start_time' => '2022-01-05',
-                'end_time' => '2022-01-06',
-                'is_done' => false,
+                'title' => 'Mathe SA',
+                'description' => 'Stoff: wird noch bekannt gegeben',
+                'start_time' => '2023-03-04',
+                'end_time' => '2023-03-04',
             ],
+
         ];
 
         foreach ($appointments as $appointment) {
