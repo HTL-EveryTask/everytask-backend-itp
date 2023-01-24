@@ -162,6 +162,7 @@ class AppFixtures extends Fixture
             $newAppointment->setTitle($appointment['title']);
             $newAppointment->setStartTime(new \DateTime($appointment['start_time']));
             $newAppointment->setEndTime(new \DateTime($appointment['end_time']));
+            $newAppointment->setDescription($appointment['description']);
             $appointments_objetcs[] = $newAppointment;
             $manager->persist($newAppointment);
         }
