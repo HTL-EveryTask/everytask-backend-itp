@@ -14,9 +14,9 @@ class AppFixtures extends Fixture
     {
         $tasks = [
             [
-                'title' => 'ITP Projektabnahme',
+                'title' => 'Mathe Hausübung',
                 'description' => 'Description 1',
-                'due_date' => '2023-01-24',
+                'due_date' => '2023-03-03',
                 'create_time' => '2022-01-01',
                 'is_done' => false,
             ],
