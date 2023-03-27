@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
             [
                 'title' => 'D-SA Übungstext',
                 'description' => 'Description 1',
-                'due_date' => '2023-03-03',
+                'due_date' => '2023-03-28',
                 'create_time' => '2022-01-01',
                 'is_done' => false,
             ],
