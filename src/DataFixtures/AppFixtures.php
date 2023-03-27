@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
     {
         $tasks = [
             [
-                'title' => 'D-SA Übungstext',
+                'title' => 'Schularbeit verbessern',
                 'description' => 'Description 1',
                 'due_date' => '2023-03-28',
                 'create_time' => '2022-01-01',
