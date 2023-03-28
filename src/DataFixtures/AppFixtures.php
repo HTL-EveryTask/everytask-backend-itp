@@ -14,9 +14,9 @@ class AppFixtures extends Fixture
     {
         $tasks = [
             [
-                'title' => 'Schularbeit verbessern',
+                'title' => 'Diplomarbeit Test',
                 'description' => 'Description 1',
-                'due_date' => '2023-03-28',
+                'due_date' => '2023-03-31',
                 'create_time' => '2022-01-01',
                 'is_done' => false,
             ],
